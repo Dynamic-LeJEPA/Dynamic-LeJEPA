@@ -1,0 +1,20 @@
+{
+  "dataset": "MimicGen two_arm_threading",
+  "epochs": 15,
+  "n_seeds_per_condition": 10,
+  "d_eff_estimator": "covariance",
+  "N_over_K_eval": 78,
+  "metrics": {
+    "no_physics":      {"d_eff": [0.1846, 0.0042], "H_ratio": [0.980, 0.002], "scale_ratio": [0.946, 0.004], "pred_r2": 0.784, "probe_r2_action": 0.412, "probe_r2_proprio": 0.937},
+    "decoder_physics": {"d_eff": [0.1740, 0.0028], "H_ratio": [0.980, 0.001], "scale_ratio": [0.946, 0.003], "pred_r2": 0.864, "probe_r2_action": 0.449, "probe_r2_proprio": 0.961},
+    "encoder_physics": {"d_eff": [0.1380, 0.0041], "H_ratio": [0.978, 0.003], "scale_ratio": [0.940, 0.007], "pred_r2": 0.966, "probe_r2_action": 0.518, "probe_r2_proprio": 0.984}
+  },
+  "wilcoxon_d_eff_holm": {
+    "dec_vs_none": {"p": 0.0020, "p_holm": 0.0059, "delta": 0.0105},
+    "enc_vs_none": {"p": 0.0020, "p_holm": 0.0059, "delta": 0.0466},
+    "enc_vs_dec":  {"p": 0.0020, "p_holm": 0.0059, "delta": -0.0361}
+  },
+  "gap_ratio": 4.43,
+  "two_sided_signature": "Encoder physics simultaneously destroys entropy (d_eff) and inflates predictability (pred R2) — Corollary IV.11.",
+  "source": "paper Tables IX-X (Sec VII-D3)"
+}
