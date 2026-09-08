@@ -1,0 +1,3 @@
+Citation
+
+@software{mostafa2025dynamiclejepa,  author  = {Mostafa, Mohsen},  title   = {Dynamic LeJEPA: Maximum-Entropy Representations for Sequential Prediction             and Latent Planning with Theoretical Guarantees},  year    = {2025},  url     = {https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA},  license = {MIT}}
