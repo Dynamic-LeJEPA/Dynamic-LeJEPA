@@ -9,6 +9,18 @@ Two d_eff estimators (Remark VI.3) — do NOT compare them numerically:
   K x K sample covariance with shrinkage. Used for EVERY final ablation
   comparison. Subject to the Proposition VI.1 rank floor when N < K
   (reliable iff N/K >= 5, Corollary VI.2).
+
+Shrinkage regimes of the covariance estimator (default schedule):
+  N > K      -> gamma = 0.01   (all Phase 2/3 final evals: N/K = 55.5, 78)
+  N > K//2   -> gamma = 0.05
+  otherwise  -> gamma = max(0.1, 1 - N/K)
+
+IMPORTANT (Prop VI.1): the bound d_eff <= (N-1)/K for N < K is a property
+of the RAW sample covariance — pass ``shrinkage=0.0`` to test it. The
+default schedule's aggressive gamma in the N < K regime fills the K-N+1
+null eigenvalues with ~gamma * (trace/K) and PARTIALLY MASKS the floor
+(a true Gaussian at N=64, K=256 reads ~0.80 instead of ~0.20). This is one
+more reason d_eff must not be trusted at N/K < 5. See tests/test_metrics.py.
 """
 from typing import Optional
 
@@ -42,11 +54,13 @@ def compute_effective_dim(var_per_dim, K: Optional[int] = None) -> float:
 
 
 def compute_effective_dim_from_embeddings(z: np.ndarray,
-                                           shrinkage: Optional[float] = None) -> dict:
+                                          shrinkage: Optional[float] = None) -> dict:
     """COVARIANCE estimator (the paper's final-ablation metric).
 
-    Ledoit-Wolf-style shrinkage toward (trace/K) * I. Returns d_eff,
-    H-ratio, scale ratio, and per-dimension variance statistics.
+    Ledoit-Wolf-style shrinkage toward (trace/K) * I. Pass shrinkage=0.0
+    for the raw sample covariance (the Prop VI.1 rank-floor regime).
+    Returns d_eff, H-ratio, scale ratio, per-dimension variance statistics,
+    and the Corollary VI.2 reliability flag ``nk_reliable`` (N/K >= 5).
     """
     N, K = z.shape
     zc = z - z.mean(axis=0, keepdims=True)
@@ -67,6 +81,7 @@ def compute_effective_dim_from_embeddings(z: np.ndarray,
         "var_std": float(np.std(var_per_dim)),
         "shrinkage_used": shrinkage, "N": int(N), "K": int(K),
         "N_over_K": N / K,
+        "nk_reliable": bool(N >= 5 * K),   # Corollary VI.2 threshold
     }
 
 
