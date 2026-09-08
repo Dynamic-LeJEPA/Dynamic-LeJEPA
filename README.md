@@ -29,7 +29,16 @@ git clone https://github.com/YOUR-USERNAME/dynamic-lejepa.gitcd dynamic-lejepapi
 Data setup (nuScenes-mini, nuScenes Trainval Part 1, MimicGen two_arm_threading):see docs/DATA.md.
 
 Quick start
-# Phase 3 primary ablation: 3 modes × 10 seeds, 15 epochs, MimicGen threadingpython experiments/phase3_mimicgen/run_ablation.py \    --hdf5 /path/to/two_arm_threading.hdf5 --epochs 15 --out results/phase3# Phase 3 budget replication (Sec VII-D6: violation deepens +49%)python experiments/phase3_mimicgen/run_ablation.py \    --hdf5 /path/to/two_arm_threading.hdf5 --epochs 30 --out results/phase3_budget# Latent CEM planning + model-exploitation diagnostic (Sec VII-D8)python experiments/phase3_mimicgen/run_cem_planning.py \    --hdf5 /path/to/two_arm_threading.hdf5 --ckpt-dir checkpoints/phase3# Phase 2 ablation: nuScenes Trainval (needs metadata ego-poses, see docs/DATA.md)python experiments/phase2_nuscenes_trainval/run_ablation.py \    --data-root /path/to/v1.0-trainval01_blobs \    --meta-root /path/to/v1.0-trainval# Phase 1 control experiment (Table IV: the d_eff measurement floor)python experiments/phase1_nuscenes_mini/run_control_experiment.py
+### Phase 3 primary ablation: 3 modes × 10 seeds, 15 epochs, MimicGen threadingpython experiments/phase3_mimicgen/run_ablation.py \    
+--hdf5 /path/to/two_arm_threading.hdf5 --epochs 15 --out results/phase3
+### Phase 3 budget replication (Sec VII-D6: violation deepens +49%)python experiments/phase3_mimicgen/run_ablation.py \    
+--hdf5 /path/to/two_arm_threading.hdf5 --epochs 30 --out results/phase3_budget
+#### Latent CEM planning + model-exploitation diagnostic (Sec VII-D8)python experiments/phase3_mimicgen/run_cem_planning.py \    
+--hdf5 /path/to/two_arm_threading.hdf5 --ckpt-dir checkpoints/phase3
+### Phase 2 ablation: nuScenes Trainval (needs metadata ego-poses, see docs/DATA.md)python experiments/phase2_nuscenes_trainval/run_ablation.py \    
+--data-root /path/to/v1.0-trainval01_blobs \    
+--meta-root /path/to/v1.0-trainval
+### Phase 1 control experiment (Table IV: the d_eff measurement floor)python experiments/phase1_nuscenes_mini/run_control_experiment.py
 Approximate cost on a Tesla T4 (the paper's environment): Phase 1 ≈ 1.5 GPU-h;Phase 2 ≈ 45 GPU-h (30 runs); Phase 3 (15 ep) ≈ 45 GPU-h; Phase 3 (30 ep) ≈ 90 GPU-h.All runners auto-resume across sessions (results are checkpointed per seed).
 
 Key results
@@ -59,11 +68,13 @@ A latent CEM planner (H = 8, population 256, 4 iterations, elite 32, 200 anchors
 Usage note: two d_eff estimators (Remark VI.3)
 dlejepa.metrics implements both estimators from the paper. The covariance estimator(compute_effective_dim_from_embeddings) is used for all final ablation comparisons and issubject to the N < K floor. The diagonal estimator (compute_effective_dim) is only forfast sample-complexity sweeps. Do not compare them numerically.
 
-Repository structure
-├── paper/  figures/  docs/  notebooks/  results/  tests/├── src/dlejepa/          # installable package (refactor of the 3 phase notebooks)│   ├── metrics.py  sigreg.py  models.py  configs.py│   ├── data_mimicgen.py  data_nuscenes.py│   ├── train.py  evaluate.py  cem_planning.py  stats.py  seed.py├── experiments/          # per-phase runners (auto-resume, stats + JSON output)└── .github/workflows/ci.yml
+
 Reproducibility & provenance
+
 Demo-level splits fixed at seed 42 → paired Wilcoxon valid; 8 bit-identical seed-levelreproductions verified across sessions.
 The exact Kaggle notebooks executed for the paper are preserved under notebooks/.
 Committed aggregate results live under results/; per-seed PKLs ship with releases.
+
 Citation
+
 @software{mostafa2025dynamiclejepa,  author  = {Mostafa, Mohsen},  title   = {Dynamic LeJEPA: Maximum-Entropy Representations for Sequential Prediction             and Latent Planning with Theoretical Guarantees},  year    = {2025},  url     = {https://github.com/YOUR-USERNAME/dynamic-lejepa},  license = {MIT}}
