@@ -8,7 +8,7 @@ authors:
   - family-names: Mostafa
     given-names: Mohsen
     email: mohsen.mostafa.ai@outlook.com
-repository-code: "https://github.com/YOUR-USERNAME/dynamic-lejepa"
+repository-code: "https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA"
 abstract: >-
   Six theorems proving prediction and representation learning are decoupled in
   JEPAs; physics is provably benign in the decoder and destructive in the
