@@ -1,0 +1,14 @@
+{
+  "dataset": "MimicGen two_arm_threading",
+  "epochs": 30,
+  "n_seeds_per_condition": 10,
+  "d_eff_estimator": "covariance",
+  "d_eff": {
+    "no_physics":      [0.2492, 0.0062],
+    "decoder_physics": [0.2319, 0.0044],
+    "encoder_physics": [0.1794, 0.0035]
+  },
+  "encoder_gap": {"at_15ep": 0.047, "at_30ep": 0.070, "growth_pct": 49},
+  "note": "The encoder-physics violation deepens with budget (+49%), while all scale/H-ratio differences vanish (Holm n.s.) — budget-monotone and purely structural, ruling out a transient training artifact.",
+  "source": "paper Sec VII-D6, Fig 11"
+}
