@@ -19,10 +19,15 @@ Sample complexity (Prop VI.1 / Cor VI.2): distributional validation of the theor
 The theory is validated by a 3-phase, 60-seeded-run protocol across autonomous driving(nuScenes) and bimanual robotic manipulation (MimicGen), with paired Wilcoxon significancein every comparison and a budget replication showing the encoder-physics violation deepenswith training.
 
 The placement principle (Theorem V.1)
+
 Component	Constraint	Max entropy preserved?	Valid?
+
 Encoder f_θ	none (SIGReg only)	Yes	✅
+
 Predictor g_φ	prediction target	N/A	✅
+
 Decoder h_ψ	physics C(ŷ)=0	N/A	✅
+
 Encoder + physics	C(z)=0	No (Cor IV.11)	❌
 
 Installation
