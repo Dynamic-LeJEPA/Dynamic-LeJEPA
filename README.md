@@ -79,7 +79,7 @@ Usage note: two d_eff estimators (Remark VI.3)
 dlejepa.metrics implements both estimators from the paper. The covariance estimator(compute_effective_dim_from_embeddings) is used for all final ablation comparisons and issubject to the N < K floor. The diagonal estimator (compute_effective_dim) is only forfast sample-complexity sweeps. Do not compare them numerically.
 
 
-### Reproducibility & provenance
+- Reproducibility & provenance
 
 Demo-level splits fixed at seed 42 → paired Wilcoxon valid; 8 bit-identical seed-levelreproductions verified across sessions.
 The exact Kaggle notebooks executed for the paper are preserved under notebooks/.
