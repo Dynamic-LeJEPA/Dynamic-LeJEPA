@@ -11,24 +11,25 @@ Code : https://www.kaggle.com/code/visionary90/dynamic-lejepa-phase-2-industrial
 
 Data and Saved Training Files : https://www.kaggle.com/datasets/babydriver1233/nuscenes-trainval-part-1-the-actual-images-and-lidar
 
-       https://www.kaggle.com/datasets/babydriver1234/nuscenes-trainval-metadata-v1-0
+ https://www.kaggle.com/datasets/babydriver1234/nuscenes-trainval-metadata-v1-0
        
-       https://www.kaggle.com/datasets/visionary90/dynamic-lejepa-save-files-0
+https://www.kaggle.com/datasets/visionary90/dynamic-lejepa-save-files-0
        
        
 
 Phase 3 : 
-Code : https://www.kaggle.com/code/babydriver1233/dynamic-lejepa-phase-3-ablation-study-with-15epo
+Codes : https://www.kaggle.com/code/babydriver1233/dynamic-lejepa-phase-3-ablation-study-with-15epo
 
-       https://www.kaggle.com/code/babydriver1233/dynamic-lejepa-phase-3-ablation-study-with-30epo
+https://www.kaggle.com/code/babydriver1233/dynamic-lejepa-phase-3-ablation-study-with-30epo
        
-       https://www.kaggle.com/code/babydriver1233/the-full-budget-replication-figure
+https://www.kaggle.com/code/babydriver1233/the-full-budget-replication-figure
+
        
 Data and Saved Training Files : https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset
 
-                                https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset-saved-files-15epo
+https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset-saved-files-15epo
                                 
-                                https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset-saved-files-30epo
+https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset-saved-files-30epo
        
        
        
