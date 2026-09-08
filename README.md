@@ -75,6 +75,4 @@ Demo-level splits fixed at seed 42 → paired Wilcoxon valid; 8 bit-identical se
 The exact Kaggle notebooks executed for the paper are preserved under notebooks/.
 Committed aggregate results live under results/; per-seed PKLs ship with releases.
 
-Citation
 
-@software{mostafa2025dynamiclejepa,  author  = {Mostafa, Mohsen},  title   = {Dynamic LeJEPA: Maximum-Entropy Representations for Sequential Prediction             and Latent Planning with Theoretical Guarantees},  year    = {2025},  url     = {https://github.com/YOUR-USERNAME/dynamic-lejepa},  license = {MIT}}
