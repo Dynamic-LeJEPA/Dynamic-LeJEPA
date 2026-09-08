@@ -1,0 +1,9 @@
+{
+  "description": "Phase 1 control experiment (paper Table IV): d_eff of a true N(0, I_256) vs the trained model at the Phase-1 sample budget",
+  "N": 404, "K": 256, "N_over_K": 1.58,
+  "d_eff_true_gaussian": 0.0041,
+  "d_eff_dynamic_lejepa": 0.0039,
+  "scale_ratio_model": 0.90,
+  "interpretation": "Near-identical values confirm that low d_eff at N/K < 5 reflects sample starvation (Proposition VI.1), not embedding collapse.",
+  "source": "paper Table IV"
+}
