@@ -1,12 +1,12 @@
 # Dynamic LeJEPA
 
-Maximum-Entropy Representations for Sequential Prediction and Latent Planning with Theoretical Guarantees
+### Maximum-Entropy Representations for Sequential Prediction and Latent Planning with Theoretical Guarantees
 
 License: MITPython 3.9+CI
 
-The design rule: Encoder maximum entropy · Predictor dynamics · Decoder physics — never the encoder.
+#### The design rule: Encoder maximum entropy · Predictor dynamics · Decoder physics — never the encoder.
 
-What this is
+### What this is
 
 Joint-Embedding Predictive Architectures (JEPAs) are the emerging backbone of latent worldmodels, yet injecting domain knowledge (physics, kinematics, geometry) into them consistentlydegrades performance, with no theoretical explanation. This repository accompanies thepaper "Dynamic LeJEPA", which resolves that paradox with six theorems:
 
@@ -30,7 +30,7 @@ Decoder h_ψ	physics C(ŷ)=0	N/A	✅
 
 Encoder + physics	C(z)=0	No (Cor IV.11)	❌
 
-Installation
+### Installation
 git clone https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA.gitcd dynamic-lejepapip 
 
 install -e .[dev]pytest -q        
@@ -38,7 +38,7 @@ install -e .[dev]pytest -q
 ### verifies the Prop VI.1 measurement floor & SIGReg+ blind-spot fix
 Data setup (nuScenes-mini, nuScenes Trainval Part 1, MimicGen two_arm_threading):see docs/DATA.md.
 
-Quick start
+### Quick start
 ### Phase 3 primary ablation: 3 modes × 10 seeds, 15 epochs, MimicGen threadingpython experiments/phase3_mimicgen/run_ablation.py \    
 --hdf5 /path/to/two_arm_threading.hdf5 --epochs 15 --out results/phase3
 ### Phase 3 budget replication (Sec VII-D6: violation deepens +49%)python experiments/phase3_mimicgen/run_ablation.py \    
@@ -51,7 +51,7 @@ Quick start
 ### Phase 1 control experiment (Table IV: the d_eff measurement floor)python experiments/phase1_nuscenes_mini/run_control_experiment.py
 Approximate cost on a Tesla T4 (the paper's environment): Phase 1 ≈ 1.5 GPU-h;Phase 2 ≈ 45 GPU-h (30 runs); Phase 3 (15 ep) ≈ 45 GPU-h; Phase 3 (30 ep) ≈ 90 GPU-h.All runners auto-resume across sessions (results are checkpointed per seed).
 
-Key results
+### Key results
 Phase 2 — nuScenes Trainval (N/K = 55.5, 10 seeds/condition, covariance d_eff;all Wilcoxon p ≤ 0.002):
 
 Metric	no physics	decoder physics	encoder physics
