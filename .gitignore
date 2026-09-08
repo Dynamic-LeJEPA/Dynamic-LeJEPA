@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Experiment artifacts (large, regenerable)
+checkpoints/
+cache/
+*.pt
+*.mm
+*.hdf5
+*.pcd.bin
+data/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets
+kaggle.json
