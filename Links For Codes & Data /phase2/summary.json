@@ -1,0 +1,25 @@
+{
+  "dataset": "nuScenes Trainval Part 1",
+  "N_over_K_train": 55.5,
+  "n_seeds_per_condition": 10,
+  "d_eff_estimator": "covariance",
+  "metrics": {
+    "no_physics":      {"d_eff": [0.9858, 0.0043], "H_ratio": [0.9637, 0.006], "scale_ratio": [0.9086, 0.014], "var_std": [0.1076, 0.015]},
+    "decoder_physics": {"d_eff": [0.9678, 0.0049], "H_ratio": [0.8165, 0.014], "scale_ratio": [0.6045, 0.023], "var_std": [0.1100, 0.010]},
+    "encoder_physics": {"d_eff": [0.9394, 0.0081], "H_ratio": [0.8225, 0.012], "scale_ratio": [0.6241, 0.021], "var_std": [0.1583, 0.013]}
+  },
+  "wilcoxon_d_eff": {
+    "dec_vs_none": {"p": 0.0020},
+    "enc_vs_none": {"p": 0.0010},
+    "enc_vs_dec":  {"p": 0.0010}
+  },
+  "scale_vs_structure": {
+    "delta_scale_decoder": 0.304,
+    "delta_scale_encoder": 0.284,
+    "delta_d_eff_decoder": 0.018,
+    "delta_d_eff_encoder": 0.046,
+    "delta_structure": 0.028,
+    "gap_ratio": 2.6
+  },
+  "source": "paper Tables VI-VII (Sec VII-C)"
+}
