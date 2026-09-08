@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dlejepa"
+version = "1.0.0"
+description = "Dynamic LeJEPA: maximum-entropy world models with provable physics placement"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Mohsen Mostafa", email = "mohsen.mostafa.ai@outlook.com" }]
+keywords = ["JEPA", "world models", "representation learning", "maximum entropy",
+            "physics-informed learning", "robotics", "autonomous driving"]
+dependencies = [
+  "numpy>=1.23", "scipy>=1.9", "torch>=1.13", "torchvision>=0.14",
+  "h5py>=3.7", "tqdm", "matplotlib", "scikit-learn", "Pillow",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
