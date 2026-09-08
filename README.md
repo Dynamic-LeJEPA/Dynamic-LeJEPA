@@ -27,8 +27,10 @@ Encoder + physics	C(z)=0	No (Cor IV.11)	❌
 
 Installation
 git clone https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA.gitcd dynamic-lejepapip 
+
 install -e .[dev]pytest -q        
-# verifies the Prop VI.1 measurement floor & SIGReg+ blind-spot fix
+
+### verifies the Prop VI.1 measurement floor & SIGReg+ blind-spot fix
 Data setup (nuScenes-mini, nuScenes Trainval Part 1, MimicGen two_arm_threading):see docs/DATA.md.
 
 Quick start
