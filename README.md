@@ -1,5 +1,5 @@
-https://huggingface.co/spaces/MohsenAI5/Dynamic-LeJEPA
 # Dynamic LeJEPA
+https://img.shields.io/badge/Focus-Simulating_Humanoid_Planning-blue
 
 ### Maximum-Entropy Representations for Sequential Prediction and Latent Planning with Theoretical Guarantees
 
