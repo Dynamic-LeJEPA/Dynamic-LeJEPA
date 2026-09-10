@@ -1,6 +1,6 @@
 # Dynamic LeJEPA
-https://img.shields.io/badge/Focus-Simulating_Humanoid_Planning-blue
-
+[https://img.shields.io/badge/Focus-Simulating_Humanoid_Planning-blue
+](https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>)
 ### Maximum-Entropy Representations for Sequential Prediction and Latent Planning with Theoretical Guarantees
 
 License: MITPython 3.9+CI
