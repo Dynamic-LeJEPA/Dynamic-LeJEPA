@@ -1,3 +1,4 @@
+https://huggingface.co/spaces/MohsenAI5/Dynamic-LeJEPA
 # Dynamic LeJEPA
 
 ### Maximum-Entropy Representations for Sequential Prediction and Latent Planning with Theoretical Guarantees
