@@ -5,6 +5,15 @@ action-conditioned prediction (+ linear & kNN oracles), task probes,
 multi-step rollout.
 Phase 1/2 (nuScenes): embedding distribution metrics on held-out pairs
 (covariance d_eff, H-ratio, scale ratio, KS marginals).
+
+Encoder-mechanism dispatch (paper Secs. VII-C5 / VII-D3): both the
+SIGReg arm (`NuScenesLeJEPA`, `ViTEncoder`) and the VAE arm
+(`NuScenesVAELeJEPA` + VAEDeterministic shim for Phase 3) evaluate
+through this module UNCHANGED — the covariance d_eff estimator
+(Remark VI.3) is applied identically across arms. The only
+arm-aware code is the latent-extraction dispatch in
+`encode_nuscenes_embeddings` (SIGReg scale vs. sampled/deterministic
+posterior latents).
 """
 import numpy as np
 import torch
@@ -53,6 +62,16 @@ def multistep_rollout(encoder, predictor, bundle, cfg, R):
 
 def evaluate_mimicgen_run(encoder, predictor, bundle: MimicGenBundle,
                           cfg: Phase3Config, seed: int) -> dict:
+    """Theorem IV.4 (a)-(d) battery — arm-agnostic.
+
+    Pass the VAEDeterministic shim as ``encoder`` for the VAE arm
+    (`train_mimicgen_vae_run` does this): every metric below then runs on
+    deterministic posterior means, and the CEM / replay paths in
+    `cem_planning` inherit the same noise-free latents. VAE-arm
+    aggregate-posterior diagnostics (`vae_stats`) are attached by
+    `train_mimicgen_vae_run` AFTER this battery, on the SAME
+    RandomState(2000+seed) frame draw as `final_metrics` — so `mu_d_eff`
+    and `d_eff` are directly comparable on identical frames."""
     R = np.random.RandomState(2000 + seed)
     device = cfg.device
     out = {}
@@ -136,27 +155,31 @@ def evaluate_mimicgen_run(encoder, predictor, bundle: MimicGenBundle,
 
 @torch.no_grad()
 def encode_nuscenes_embeddings(model, dataset, device, max_n=None, batch=64):
-    """Encode img_t of each held-out pair; embeddings carry the SIGReg
-    learned scale (the distribution the maximum-entropy claim applies to)."""
-    scale = model.sigreg.get_scale()
+    """Encode img_t of each held-out pair.
+
+    Arm dispatch (paper Secs. VII-C1 / VII-C5):
+      * SIGReg arm (`NuScenesLeJEPA`, has `.sigreg`): embeddings carry the
+        SIGReg learned scale — the distribution the maximum-entropy claim
+        applies to.
+      * VAE arm (`NuScenesVAELeJEPA`, no `.sigreg`): the encoder returns
+        (mu, logvar[, patch_tokens]); latents are SAMPLED via
+        reparameterization (the published Phase 2 protocol) unless the
+        model runs the deterministic-mu protocol (`model.deterministic`,
+        Phase-3-style). Sampling draws from the run's seeded RNG stream,
+        so a completed run's eval latents are bit-reproducible under the
+        deterministic pipeline (paper Sec. VII-D1). No scale
+        multiplication — the marginal KL operates on the raw (mu, logvar)
+        parameterization.
+    """
+    sigreg = getattr(model, "sigreg", None)      # None on the VAE arm
+    deterministic = bool(getattr(model, "deterministic", False))
     n = len(dataset) if max_n is None else min(max_n, len(dataset))
     zs = []
     for i in range(0, n, batch):
         items = [dataset[int(j)] for j in range(i, min(i + batch, n))]
         img = torch.stack([it["img_t"] for it in items]).to(device)
-        zs.append((model.encoder(img) * scale).cpu())
-    return torch.cat(zs).numpy()
-
-
-def evaluate_nuscenes_run(model, dataset, cfg, max_n=None):
-    """Final ablation metrics for Phases 1-2 (covariance d_eff, H-ratio,
-    scale ratio, KS marginal statistics) on held-out scene-level pairs."""
-    Z = encode_nuscenes_embeddings(model, dataset, cfg.device, max_n=max_n)
-    m = compute_effective_dim_from_embeddings(Z)
-    ks = ks_gaussian_stats(Z)
-    return {"final_metrics": {
-        "d_eff": m["d_eff"], "H_ratio": m["h_ratio"],
-        "scale_ratio": m["scale_ratio"], "var_std": m["var_std"],
-        "var_mean": m["var_mean"], "N": int(m["N"]),
-        "ks_stat_mean": ks["ks_stat_mean"],
-        "source": "val_pairs_covariance"}}
+        if sigreg is not None:
+            zs.append((model.encoder(img) * sigreg.get_scale()).cpu())
+        else:
+            out = model.encoder(img)
+            if not (isinstance(out, tuple)
