@@ -15,7 +15,7 @@ Data and Saved Training Files : https://www.kaggle.com/datasets/babydriver1233/n
        
 https://www.kaggle.com/datasets/visionary90/dynamic-lejepa-save-files-0
 
-For Phase 2 Code For Expand after update the paper : https://www.kaggle.com/code/babydriver1233/dynamiclejepa-phase-2-expand
+For Phase 2 Code For Expand after update the paper With VAE Model as a comparison Model : https://www.kaggle.com/code/babydriver1233/dynamiclejepa-phase-2-expand
 
 Data and Saved Training Files : https://www.kaggle.com/datasets/babydriver1233/nuscenes-trainval-part-1-the-actual-images-and-lidar
 
@@ -37,7 +37,7 @@ https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset-saved-fil
                                 
 https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset-saved-files-30epo
        
-For Phase 3 Code For Expand after update the paper : https://www.kaggle.com/code/babydriver1233/dynamic-lejepa-phase-3-expand-with-15epo     
+For Phase 3 Code For Expand after update the paper With VAE Model as a comparison Model  : https://www.kaggle.com/code/babydriver1233/dynamic-lejepa-phase-3-expand-with-15epo     
 
 Data and Saved Training Files : https://www.kaggle.com/datasets/babydriver1233/mimicgen-nvidia-dataset
 
