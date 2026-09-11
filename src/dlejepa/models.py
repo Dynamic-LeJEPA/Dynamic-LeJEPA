@@ -4,6 +4,12 @@ Phase 1/2 (nuScenes):  MaxEntropyEncoder | EgoMotionPredictor (Thm IV.7)
                        | PhysicsInformedDepthDecoder (Thm IV.10, Ex IV.12)
 Phase 3 (MimicGen):    ViTEncoder (Thm IV.4) | ActionPredictor (Thm IV.13)
                        | ProprioDecoder (Thm IV.10 analog)
+VAE arm (Ph. 2-3):     VAEEncoder (MimicGen) | VAEEncoderNuscenes
+                       | VAEDeterministic shim — defined in `dlejepa.vae`
+                       and lazily re-exported below, so this module
+                       remains the home of the *deterministic* encoders
+                       (Theorems IV.1 / IV.4: no constraints besides the
+                       distribution-matching term).
 """
 import torch
 import torch.nn as nn
@@ -223,3 +229,63 @@ class ProprioDecoder(nn.Module):
 
     def forward(self, z):
         return self.net(z)
+
+
+# ============================================================================
+# VAE arm (Phases 2-3) — lazy re-export from `dlejepa.vae`
+# ============================================================================
+# One module per distribution-matching mechanism: `dlejepa.sigreg` holds
+# SIGReg / SIGReg+ (deterministic encoder), `dlejepa.vae` holds the
+# variational mechanism —
+#   * VAEEncoder          (Phase 3, MimicGen: ViT trunk, proprio-fused
+#                          (mu, logvar) head — mirrors the notebook class
+#                          and the released Phase-3 VAE checkpoints),
+#   * VAEEncoderNuscenes  (Phase 2, nuScenes: MaxEntropy trunk, linear
+#                          (mu, logvar) projection `latent_proj` — mirrors
+#                          the notebook class and the released Phase-2 VAE
+#                          checkpoints; two classes because the two phases'
+#                          heads genuinely differ, keeping state-dict keys
+#                          checkpoint-compatible),
+#   * VAEDeterministic    (encoder -> mu shim, so evaluate / CEM / replay
+#                          run unchanged on VAE checkpoints with
+#                          deterministic latents, per the paper),
+#   * vae_kl_loss         (closed-form marginal D_KL(q(z|x) || N(0, I))),
+#   * vae_plus_cov_loss   (optional SIGReg+ covariance penalty — VAE+),
+#   * vae_latent_stats    (signal-fraction diagnostic: mu_d_eff, sf, KL, ...
+#                          — paper Remark "Posterior Signal Fraction").
+#
+# The re-export is LAZY (PEP 562) on purpose:
+#   * vae.py reuses PatchEmbed / TransformerBlock from this module, so an
+#     eager `from .vae import ...` here would create a circular import;
+#   * it keeps this file importable (and CI green) before vae.py lands.
+# Usage: `from dlejepa.models import VAEEncoder` or
+#        `from dlejepa.vae import VAEEncoder` — both resolve identically.
+
+_VAE_EXPORTS = (
+    "VAEEncoder",                 # Phase 3 (MimicGen) variational encoder
+    "VAEEncoderNuscenes",         # Phase 2 (nuScenes) variational encoder
+    "VAEDeterministic",           # deterministic-mu shim for eval / planning
+    "vae_kl_loss",                # closed-form marginal KL to N(0, I)
+    "vae_plus_cov_loss",          # optional SIGReg+ covariance penalty (VAE+)
+    "vae_latent_stats",           # signal-fraction diagnostic
+    "build_vae_models",           # Phase 3 factory -> (enc, pred, dec)
+    "build_vae_models_nuscenes",  # Phase 2 factory -> (enc, pred, dec)
+)
+
+
+def __getattr__(name):
+    if name in _VAE_EXPORTS:
+        import importlib
+        try:
+            return getattr(importlib.import_module(".vae", __name__), name)
+        except ImportError as exc:  # vae.py not present yet
+            raise ImportError(
+                f"'{name}' is defined in dlejepa.vae, which is not "
+                f"available ({exc}). Add src/dlejepa/vae.py to enable "
+                f"the VAE arm (paper Secs. VII-C5 / VII-D3)."
+            ) from exc
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
+def __dir__():
+    return sorted(set(globals()) | set(_VAE_EXPORTS))
