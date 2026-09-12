@@ -124,8 +124,8 @@ Phase 2 Results (nuScenes Trainval, N/K = 55.5)
      | Metric     | no physics    | decoder physics  | encoder physics |
      |------------|---------------|------------------|-----------------|
      | d_eff      | 0.9858 ± .004 |  0.9678 ± .005   | 0.9394 ± .008   |
-     | H-ratio    |   0.9637      |     0.8165       |   0.822         |
-     | scale ratio| 0.9086        |       0.6045     |   0.6241        |
+     | H-ratio    | 0.9637        |  0.8165          | 0.822         |
+     | scale ratio| 0.9086        |  0.6045          | 0.6241        |
 
 
 
