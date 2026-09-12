@@ -70,6 +70,7 @@ Phase 3: Cross-Domain Transfer (MimicGen)
 
 The paper employs a three-phase experimental design:
 
+```python
      flowchart LR
          A[Phase 1: Debugging & Metric Characterization] --> B[Phase 2: Full Theorem Validation]
          B --> C[Phase 3: Cross-Domain Transfer]
@@ -92,3 +93,4 @@ The paper employs a three-phase experimental design:
              C2[Correlated collapse discovery]
              C3[Budget replication]
          end
+```
