@@ -40,15 +40,18 @@ Validated Design Principle: Encoder maximum-entropy · Predictor dynamics · Dec
 Cross-Domain Validation: Validated on both autonomous driving (nuScenes) and robotic manipulation (MimicGen)
 Robust Experimental Protocol: 110 seeded runs across 2 domains and 2 encoder mechanisms with paired Wilcoxon significance (Holm-corrected p=0.0078)
 
-### 🛠️ Installation
+### 📦 Installation
 
-Prerequisites
+From PyPI (recommended)
 
-Python 3.8+
+pip install dynamic-lejepa
 
-PyTorch 2.0+
+From source (development)
 
 CUDA (recommended)
+
+git clone https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA.gitcd Dynamic-LeJEPApip install -e .[dev]
+
 
 ### Setup
 
