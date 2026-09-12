@@ -16,7 +16,7 @@
 </a><br>
 <img src="https://img.shields.io/badge/Python-3.8+-brightgreen.svg" alt="Python Version"><br>
 <img src="https://img.shields.io/badge/PyTorch-2.0+-orange.svg" alt="PyTorch Version"><br>
-<a href="https://arxiv.org/abs/2511.08544">
+<a href="https://arxiv.org/abs/">
 <img src="https://img.shields.io/badge/arXiv-2511.08544-red.svg" alt="arXiv Paper">
 </a>
 </p>
