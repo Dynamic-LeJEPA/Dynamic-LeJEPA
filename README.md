@@ -105,7 +105,7 @@ flowchart LR
 Phase 2 Results (nuScenes Trainval, N/K = 55.5)
 
      | Metric     | no physics    | decoder physics  | encoder physics |
-     |-------    -|------------   |--------------- - |-----------------|
+     |------------|---------------|------------------|-----------------|
      | d_eff      | 0.9858 ± .004 |  0.9678 ± .005   | 0.9394 ± .008   |
      | H-ratio    |   0.9637      |     0.8165       |   0.822         |
      | scale ratio| 0.9086        |       0.6045     |   0.6241        |
@@ -115,35 +115,51 @@ Phase 2 Results (nuScenes Trainval, N/K = 55.5)
 Scale-vs-structure decomposition: Both physics conditions lose ~equal scale, but the encoder condition's Δ_structure = 0.028 (2.6× the decoder gap) — the genuine, non-proportional eigen-spectrum distortion predicted by Corollary IV.11.
 
 Phase 3 Results (MimicGen, N/K = 78)
-Metric
-no physics
-decoder physics
-encoder physics
-d_eff	0.1846 ± .004	0.1740 ± .003	0.1380 ± .004
-prediction R²	0.784	0.864	0.966
-probe R² (proprio)	0.937	0.961	0.984
+
+    | Metric            | no physics    | decoder physics | encoder physics |
+    |-------------------|---------------|---------------|---------------- -|
+    | d_eff             | 0.1846 ± .004 | 0.1740 ± .003 | 0.1380 ± .004     |
+    | prediction R²     | 0.784         | 0.864 | 0.966 |
+    | probe R² (proprio)| 0.937         | 0.961 | 0.984 |              
+
+
 
 The two-sided signature of Corollary IV.11: Encoder physics simultaneously destroys entropy and inflates predictability — the encoder is dragged toward the ≤14-D image of the action space. Budget replication (30 ep): encoder gap grows 0.047 → 0.070 (+49%) while all scale/H-ratio effects vanish — the violation is budget-monotone and purely structural.
 
 Phase 1 Results (nuScenes-mini, N/K = 1.58)
 At N/K = 1.58, d_eff ≈ 0.004 for both the model and a true N(0, I₂₅₆) control (Table IV) — low d_eff in low-data regimes reflects sample starvation, not embedding collapse. This motivates the N/K ≥ 5 reliability threshold.
 
-⚠️ Important Usage Notes
+### ⚠️ Important Usage Notes
+
 Two d_eff Estimators: The repository implements both covariance-based and diagonal estimators. The covariance estimator (compute_effective_dim_from_embeddings) is used for all final ablation comparisons and is subject to the N < K floor. The diagonal estimator (compute_effective_dim) is only for fast sample-complexity sweeps. Do not compare them numerically.
 SIGReg+ Implementation: For low-dimensional data, use src/dlejepa/sigreg.py with SIGReg+ (covariance off-diagonal penalty) to restore joint structure (d_eff from 0.022 to 0.18) while preserving marginal entropy.
 Posterior Signal Fraction: For variational encoders, monitor the posterior signal fraction Var_x[μ]/(Var_x[μ] + E_x[σ²]). A nominally satisfied marginal KL does not certify signal, because collapse can hide beneath the encoder's own sampling-noise floor.
-📝 Licensing
+
+### 📝 Licensing
+
 Training, evaluation, and analysis code: MIT License
 Manuscript text and figures: CC BY 4.0
 Trained checkpoints and derived result files:
 nuScenes: CC BY-NC-SA 4.0
 MimicGen: License of upstream MimicGen release
-🤝 Contributing
+
+### 🤝 Contributing
+
 We welcome contributions! Please see CONTRIBUTING.md for guidelines.
 
-📧 Contact
+### 📧 Contact
+
 For questions and inquiries, please contact:
 
 Mohsen Mostafa - mohsen.mostafa.ai@outlook.com
-📚 Citation
+
+### 📚 Citation
+
 If you use Dynamic LeJEPA in your research, please cite:
+
+     @article{mostafa2025dynamic,
+       title={Dynamic LeJEPA: Maximum Entropy Representations for Sequential Prediction and Latent Planning with Theoretical Guarantees},
+       author={Mostafa, Mohsen},
+       journal={arXiv preprint arXiv:2511.08544},
+       year={2025}
+     }
