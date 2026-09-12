@@ -53,7 +53,8 @@ CUDA (recommended)
 ### Setup
 
 Clone the repositorygit clone https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA.gitcd Dynamic-LeJEPA# Install dependenciespip install -e .[dev] - Run tests to verify installationpytest -q
-Data Setup
+
+### Data Setup
 
 -For dataset preparation and download instructions, refer to docs/DATA.md. The primary datasets are:
 
