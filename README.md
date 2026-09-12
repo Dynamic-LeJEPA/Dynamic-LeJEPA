@@ -7,7 +7,7 @@
 <p align="center">
 <a href="https://www.alphaxiv.org/pdf/2609.dynamic-lejepa-physics-informed-world-models">📄 Paper</a> •
 <a href="https://huggingface.co/spaces/MohsenAI5/Dynamic-LeJEPA">🌐 Demo</a> •
-<a href="https://github.com/YOUR_USERNAME/YOUR_REPO">🧪 Code</a>
+<a href="https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA">🧪 Code</a>
 </p>
 
 <p align="center">
