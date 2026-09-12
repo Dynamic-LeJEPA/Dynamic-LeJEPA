@@ -1,6 +1,0 @@
-Family,Mode,Seeds,d_eff,H_ratio,scale_ratio,Time (min)
-MAIN,Decoder Physics,10,0.9678 ± 0.0051,0.8165 ± 0.0142,0.6045 ± 0.0246,16.6
-MAIN,Encoder Physics,10,0.9394 ± 0.0086,0.8225 ± 0.0125,0.6241 ± 0.0223,43.4
-MAIN,No Physics (Baseline),10,0.9858 ± 0.0046,0.9637 ± 0.0065,0.9086 ± 0.0151,42.4
-VAE,VAE + Decoder Physics,10,0.5950 ± 0.0200,0.2591 ± 0.0178,0.3998 ± 0.0120,64.4
-VAE,VAE + Encoder Physics,10,0.5408 ± 0.0282,0.8056 ± 0.0171,0.8578 ± 0.0508,72.3
