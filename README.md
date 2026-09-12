@@ -21,7 +21,6 @@
 </a>
 </p>
 
-License: MITPython 3.9+CI
 
 #### The design rule: Encoder maximum entropy · Predictor dynamics · Decoder physics — never the encoder.
 
