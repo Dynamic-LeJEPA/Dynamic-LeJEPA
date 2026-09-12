@@ -43,54 +43,59 @@ MimicGen (bimanual robotic manipulation)
 
 Phase 1: Debugging & Metric Characterization
 
-     # Control experiment on nuScenes-mini
-     python experiments/phase1_nuscenes_mini/run_control_experiment.py
-
+```python
+# Control experiment on nuScenes-mini
+python experiments/phase1_nuscenes_mini/run_control_experiment.py
+```
 Phase 2: Full Theorem Validation (nuScenes Trainval)
 
+```python
     python experiments/phase2_nuscenes_trainval/run_ablation.py \
     --data-root /path/to/v1.0-trainval01_blobs \
     --meta-root /path/to/v1.0-trainval
+```
 
 Phase 3: Cross-Domain Transfer (MimicGen)
 
-    # Primary ablation (15 epochs)
-    python experiments/phase3_mimicgen/run_ablation.py \
-    --hdf5 /path/to/two_arm_threading.hdf5 --epochs 15 --out results/phase3
+```python
+# Primary ablation (15 epochs)
+python experiments/phase3_mimicgen/run_ablation.py \
+--hdf5 /path/to/two_arm_threading.hdf5 --epochs 15 --out results/phase3
 
-    # Budget replication (30 epochs)
-    python experiments/phase3_mimicgen/run_ablation.py \
-    --hdf5 /path/to/two_arm_threading.hdf5 --epochs 30 --out results/phase3_budget
+# Budget replication (30 epochs)
+python experiments/phase3_mimicgen/run_ablation.py \
+--hdf5 /path/to/two_arm_threading.hdf5 --epochs 30 --out results/phase3_budget
 
-    # Latent CEM planning + model-exploitation diagnostic
-    python experiments/phase3_mimicgen/run_cem_planning.py \
-    --hdf5 /path/to/two_arm_threading.hdf5 --ckpt-dir checkpoints/phase3
+# Latent CEM planning + model-exploitation diagnostic
+python experiments/phase3_mimicgen/run_cem_planning.py \
+--hdf5 /path/to/two_arm_threading.hdf5 --ckpt-dir checkpoints/phase3
+```
 
 🧪 Experimental Protocol
 
 The paper employs a three-phase experimental design:
 
-```python
-     flowchart LR
-         A[Phase 1: Debugging & Metric Characterization] --> B[Phase 2: Full Theorem Validation]
-         B --> C[Phase 3: Cross-Domain Transfer]
-         C --> D[Model-Exploitation Diagnostic]
-    
-         subgraph A [Phase 1]
-             A1[nuScenes-mini<br>N/K=1.58]
-             A2[deff floor validation<br>Table V]
-             A3[Depth decoding]
-         end
-    
-         subgraph B [Phase 2]
-             B1[nuScenes Trainval<br>N/K=55.5]
-             B2[Scale-vs-structure decomposition]
-             B3[Paired Wilcoxon tests]
-         end
-    
-         subgraph C [Phase 3]
-             C1[MimicGen threading<br>N/K=78]
-             C2[Correlated collapse discovery]
-             C3[Budget replication]
-         end
+```mermaid
+flowchart LR
+    A[Phase 1: Debugging & Metric Characterization] --> B[Phase 2: Full Theorem Validation]
+    B --> C[Phase 3: Cross-Domain Transfer]
+    C --> D[Model-Exploitation Diagnostic]
+
+    subgraph Phase1 [Phase 1]
+        A1[nuScenes-mini<br>N/K=1.58]
+        A2[deff floor validation<br>Table V]
+        A3[Depth decoding]
+    end
+
+    subgraph Phase2 [Phase 2]
+        B1[nuScenes Trainval<br>N/K=55.5]
+        B2[Scale-vs-structure decomposition]
+        B3[Paired Wilcoxon tests]
+    end
+
+    subgraph Phase3 [Phase 3]
+        C1[MimicGen threading<br>N/K=78]
+        C2[Correlated collapse discovery]
+        C3[Budget replication]
+    end
 ```
