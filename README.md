@@ -170,7 +170,7 @@ At N/K = 1.58, d_eff ≈ 0.004 for both the model and a true N(0, I₂₅₆) co
 
 -Manuscript text and figures: CC BY 4.0
 
--Trained checkpoints and derived result files:
+-Trained checkpoints and derived result files :
 
   nuScenes: CC BY-NC-SA 4.0
 
