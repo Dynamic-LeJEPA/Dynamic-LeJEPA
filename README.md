@@ -124,9 +124,9 @@ Phase 2 Results (nuScenes Trainval, N/K = 55.5)
      | Metric     | no physics    | decoder physics  | encoder physics |
      |------------|---------------|------------------|-----------------|
      | d_eff      | 0.9858 ± .004 |  0.9678 ± .005   | 0.9394 ± .008   |
-     | H-ratio    | 0.9637        |  0.8165          | 0.822         |
-     | scale ratio| 0.9086        |  0.6045          | 0.6241        |
-
+     | H-ratio    | 0.9637        |  0.8165          | 0.822           |
+     | scale ratio| 0.9086        |  0.6045          | 0.6241          |
+ 
 
 
 Scale-vs-structure decomposition: Both physics conditions lose ~equal scale, but the encoder condition's Δ_structure = 0.028 (2.6× the decoder gap) — the genuine, non-proportional eigen-spectrum distortion predicted by Corollary IV.11.
@@ -136,8 +136,8 @@ Phase 3 Results (MimicGen, N/K = 78)
     | Metric            | no physics    | decoder physics | encoder physics |
     |-------------------|---------------|---------------|-------------------|
     | d_eff             | 0.1846 ± .004 | 0.1740 ± .003 | 0.1380 ± .004     |
-    | prediction R²     | 0.784         | 0.864 | 0.966 |
-    | probe R² (proprio)| 0.937         | 0.961 | 0.984 |              
+    | prediction R²     | 0.784         | 0.864         | 0.966             |
+    | probe R² (proprio)| 0.937         | 0.961         | 0.984             |              
 
 
 
