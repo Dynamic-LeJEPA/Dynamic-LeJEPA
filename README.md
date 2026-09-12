@@ -133,7 +133,7 @@ Scale-vs-structure decomposition: Both physics conditions lose ~equal scale, but
 Phase 3 Results (MimicGen, N/K = 78)
 
     | Metric            | no physics    | decoder physics | encoder physics |
-    |-------------------|---------------|---------------|---------------- -|
+    |-------------------|---------------|---------------|-------------------|
     | d_eff             | 0.1846 ± .004 | 0.1740 ± .003 | 0.1380 ± .004     |
     | prediction R²     | 0.784         | 0.864 | 0.966 |
     | probe R² (proprio)| 0.937         | 0.961 | 0.984 |              
