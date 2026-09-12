@@ -141,7 +141,8 @@ Phase 3 Results (MimicGen, N/K = 78)
 
 The two-sided signature of Corollary IV.11: Encoder physics simultaneously destroys entropy and inflates predictability — the encoder is dragged toward the ≤14-D image of the action space. Budget replication (30 ep): encoder gap grows 0.047 → 0.070 (+49%) while all scale/H-ratio effects vanish — the violation is budget-monotone and purely structural.
 
-Phase 1 Results (nuScenes-mini, N/K = 1.58)
+#### Phase 1 Results (nuScenes-mini, N/K = 1.58)
+
 At N/K = 1.58, d_eff ≈ 0.004 for both the model and a true N(0, I₂₅₆) control (Table IV) — low d_eff in low-data regimes reflects sample starvation, not embedding collapse. This motivates the N/K ≥ 5 reliability threshold.
 
 ### ⚠️ Important Usage Notes
