@@ -9,29 +9,32 @@ License: MITPython 3.9+CI
 
 #### The design rule: Encoder maximum entropy · Predictor dynamics · Decoder physics — never the encoder.
 
-### What this is
+### 📖 Overview
 
-Joint-Embedding Predictive Architectures (JEPAs) are the emerging backbone of latent worldmodels, yet injecting domain knowledge (physics, kinematics, geometry) into them consistentlydegrades performance, with no theoretical explanation. This repository accompanies thepaper "Dynamic LeJEPA", which resolves that paradox with six theorems:
+This repository contains the official implementation of Dynamic LeJEPA, a theoretically grounded framework for Joint-Embedding Predictive Architectures (JEPAs) in sequential domains like autonomous driving and robotic manipulation. The work resolves a critical paradox: while injecting domain knowledge (physics, kinematics, geometry) into JEPAs consistently degrades performance, we prove through six theorems that the isotropic maximum-entropy embedding is symmetry-stable under sequential prediction losses, and that physics constraints are provably benign on the observation decoder but destructive on the encoder.
 
-Prediction–entropy separation (Thm IV.1): sequential prediction losses provably do notalter the optimal maximum-entropy embedding distribution.
+🧩 Key Features
+Theoretical Guarantees: Six theorems proving that:
+Prediction losses do not alter the optimal maximum-entropy embedding distribution (Theorem IV.1)
+Physics constraints belong in the decoder, not the encoder (Theorem IV.10/Corollary IV.11)
+Sample complexity requirements for reliable distributional validation (Proposition VI.1)
+Validated Design Principle: Encoder maximum-entropy · Predictor dynamics · Decoder physics
+Cross-Domain Validation: Validated on both autonomous driving (nuScenes) and robotic manipulation (MimicGen)
+Robust Experimental Protocol: 110 seeded runs across 2 domains and 2 encoder mechanisms with paired Wilcoxon significance (Holm-corrected p=0.0078)
+🛠️ Installation
+Prerequisites
+Python 3.8+
+PyTorch 2.0+
+CUDA (recommended)
+Setup
+# Clone the repositorygit clone https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA.gitcd Dynamic-LeJEPA# Install dependenciespip install -e .[dev]# Run tests to verify installationpytest -q
+Data Setup
+For dataset preparation and download instructions, refer to docs/DATA.md. The primary datasets are:
 
-Physics placement (Thm IV.10 / Cor IV.11): physics constraints are benign on theobservation decoder and destructive on the encoder — explaining why priorphysics-informed JEPA attempts failed.
-
-Sample complexity (Prop VI.1 / Cor VI.2): distributional validation of the theoremsrequires N/K ≥ 5; below that, effective-dimensionality metrics hit a rank floor andreport spurious "collapse".
-
-The theory is validated by a 3-phase, 60-seeded-run protocol across autonomous driving(nuScenes) and bimanual robotic manipulation (MimicGen), with paired Wilcoxon significancein every comparison and a budget replication showing the encoder-physics violation deepenswith training.
-
-The placement principle (Theorem V.1)
-
-Component	Constraint	Max entropy preserved?	Valid?
-
-Encoder f_θ	none (SIGReg only)	Yes	✅
-
-Predictor g_φ	prediction target	N/A	✅
-
-Decoder h_ψ	physics C(ŷ)=0	N/A	✅
-
-Encoder + physics	C(z)=0	No (Cor IV.11)	❌
+nuScenes (autonomous driving)
+MimicGen (bimanual robotic manipulation)
+🚀 Quick Start
+Phase 1: Debugging & Metric Characterization
 
 ### Installation
 git clone https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA.gitcd dynamic-lejepapip 
