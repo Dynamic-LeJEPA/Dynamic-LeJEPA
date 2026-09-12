@@ -169,7 +169,7 @@ We welcome contributions! Please see CONTRIBUTING.md for guidelines.
 
 For questions and inquiries, please contact:
 
-Mohsen Mostafa - mohsen.mostafa.ai@outlook.com
+Mohsen Mostafa - mohsen.mostafa.ai@outlook.com / mohsen@aventro.co.uk
 
 ### 📚 Citation
 
