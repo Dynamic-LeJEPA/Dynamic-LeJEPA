@@ -2,7 +2,9 @@
 ![Simulating Humanoid Planning](https://img.shields.io/badge/Research-Simulating_Humanoid_Planning-orange)
 
 
-## Dynamic LeJEPA: Maximum Entropy Representations for Sequential Prediction and Latent Planning
+<h1 align="center">
+  Dynamic LeJEPA: Maximum Entropy Representations for Sequential Prediction and Latent Planning
+</h1>
 
 <p align="center">
 <a href="https://www.alphaxiv.org/pdf/2609.dynamic-lejepa-physics-informed-world-models">📄 Paper</a> •
