@@ -1,0 +1,5 @@
+Family,Comparison,Δ d_eff,p (t-test),Cohen's d,Sig.
+MAIN,Decoder Physics vs Encoder Physics,+0.0284,2.36e-07 ***,4.019,***
+MAIN,Decoder Physics vs No Physics (Baseline),-0.0180,1.59e-07 ***,-3.711,***
+MAIN,Encoder Physics vs No Physics (Baseline),-0.0464,6.11e-10 ***,-6.751,***
+VAE,VAE + Decoder Physics vs VAE + Encoder Physics,+0.0542,1.38e-04 ***,2.215,***
