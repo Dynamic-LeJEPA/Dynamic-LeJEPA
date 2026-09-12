@@ -28,7 +28,7 @@
 
 This repository contains the official implementation of Dynamic LeJEPA, a theoretically grounded framework for Joint-Embedding Predictive Architectures (JEPAs) in sequential domains like autonomous driving and robotic manipulation. The work resolves a critical paradox: while injecting domain knowledge (physics, kinematics, geometry) into JEPAs consistently degrades performance, we prove through six theorems that the isotropic maximum-entropy embedding is symmetry-stable under sequential prediction losses, and that physics constraints are provably benign on the observation decoder but destructive on the encoder.
 
-🧩 Key Features
+#### 🧩 Key Features
 
 Theoretical Guarantees: Six theorems proving that:
 Prediction losses do not alter the optimal maximum-entropy embedding distribution (Theorem IV.1)
@@ -43,7 +43,7 @@ Python 3.8+
 PyTorch 2.0+
 CUDA (recommended)
 
-Setup
+#### Setup
 
 Clone the repositorygit clone https://github.com/Dynamic-LeJEPA/Dynamic-LeJEPA.gitcd Dynamic-LeJEPA# Install dependenciespip install -e .[dev] - Run tests to verify installationpytest -q
 Data Setup
@@ -54,7 +54,7 @@ nuScenes (autonomous driving)
 
 MimicGen (bimanual robotic manipulation)
 
-🚀 Quick Start
+#### 🚀 Quick Start
 
 Phase 1: Debugging & Metric Characterization
 
@@ -86,7 +86,7 @@ python experiments/phase3_mimicgen/run_cem_planning.py \
 --hdf5 /path/to/two_arm_threading.hdf5 --ckpt-dir checkpoints/phase3
 ```
 
-🧪 Experimental Protocol
+#### 🧪 Experimental Protocol
 
 The paper employs a three-phase experimental design:
 
