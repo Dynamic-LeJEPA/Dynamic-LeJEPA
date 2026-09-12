@@ -131,9 +131,11 @@ At N/K = 1.58, d_eff ≈ 0.004 for both the model and a true N(0, I₂₅₆) co
 
 ### ⚠️ Important Usage Notes
 
-Two d_eff Estimators: The repository implements both covariance-based and diagonal estimators. The covariance estimator (compute_effective_dim_from_embeddings) is used for all final ablation comparisons and is subject to the N < K floor. The diagonal estimator (compute_effective_dim) is only for fast sample-complexity sweeps. Do not compare them numerically.
-SIGReg+ Implementation: For low-dimensional data, use src/dlejepa/sigreg.py with SIGReg+ (covariance off-diagonal penalty) to restore joint structure (d_eff from 0.022 to 0.18) while preserving marginal entropy.
-Posterior Signal Fraction: For variational encoders, monitor the posterior signal fraction Var_x[μ]/(Var_x[μ] + E_x[σ²]). A nominally satisfied marginal KL does not certify signal, because collapse can hide beneath the encoder's own sampling-noise floor.
+1- Two d_eff Estimators: The repository implements both covariance-based and diagonal estimators. The covariance estimator (compute_effective_dim_from_embeddings) is used for all final ablation comparisons and is subject to the N < K floor. The diagonal estimator (compute_effective_dim) is only for fast sample-complexity sweeps. Do not compare them numerically.
+
+2- SIGReg+ Implementation: For low-dimensional data, use src/dlejepa/sigreg.py with SIGReg+ (covariance off-diagonal penalty) to restore joint structure (d_eff from 0.022 to 0.18) while preserving marginal entropy.
+
+3- Posterior Signal Fraction: For variational encoders, monitor the posterior signal fraction Var_x[μ]/(Var_x[μ] + E_x[σ²]). A nominally satisfied marginal KL does not certify signal, because collapse can hide beneath the encoder's own sampling-noise floor.
 
 ### 📝 Licensing
 
