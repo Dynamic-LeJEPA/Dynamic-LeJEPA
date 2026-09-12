@@ -70,25 +70,25 @@ Phase 3: Cross-Domain Transfer (MimicGen)
 
 The paper employs a three-phase experimental design:
 
-flowchart LR
-    A[Phase 1: Debugging & Metric Characterization] --> B[Phase 2: Full Theorem Validation]
-    B --> C[Phase 3: Cross-Domain Transfer]
-    C --> D[Model-Exploitation Diagnostic]
+     flowchart LR
+         A[Phase 1: Debugging & Metric Characterization] --> B[Phase 2: Full Theorem Validation]
+         B --> C[Phase 3: Cross-Domain Transfer]
+         C --> D[Model-Exploitation Diagnostic]
     
-    subgraph A [Phase 1]
-        A1[nuScenes-mini<br>N/K=1.58]
-        A2[deff floor validation<br>Table V]
-        A3[Depth decoding]
-    end
+         subgraph A [Phase 1]
+             A1[nuScenes-mini<br>N/K=1.58]
+             A2[deff floor validation<br>Table V]
+             A3[Depth decoding]
+         end
     
-    subgraph B [Phase 2]
-        B1[nuScenes Trainval<br>N/K=55.5]
-        B2[Scale-vs-structure decomposition]
-        B3[Paired Wilcoxon tests]
-    end
+         subgraph B [Phase 2]
+             B1[nuScenes Trainval<br>N/K=55.5]
+             B2[Scale-vs-structure decomposition]
+             B3[Paired Wilcoxon tests]
+         end
     
-    subgraph C [Phase 3]
-        C1[MimicGen threading<br>N/K=78]
-        C2[Correlated collapse discovery]
-        C3[Budget replication]
-    end
+         subgraph C [Phase 3]
+             C1[MimicGen threading<br>N/K=78]
+             C2[Correlated collapse discovery]
+             C3[Budget replication]
+         end
