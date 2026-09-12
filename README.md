@@ -181,3 +181,14 @@ If you use Dynamic LeJEPA in your research, please cite:
        journal={arXiv preprint arXiv:2511.08544},
        year={2025}
      }
+
+<div align="center">
+
+⭐ Star this repository if you find it helpful!
+
+← Back to Paper • Interactive Demo →
+
+</div>
+```
+
+This README.md provides a comprehensive overview of the Dynamic LeJEPA repository, incorporating the latest theoretical developments, experimental results, and practical guidance from your updated paper. It maintains all the essential elements of a good README while highlighting the novel contributions and important usage notes for researchers who want to reproduce or build upon your work.
