@@ -39,10 +39,15 @@ Sample complexity requirements for reliable distributional validation (Propositi
 Validated Design Principle: Encoder maximum-entropy · Predictor dynamics · Decoder physics
 Cross-Domain Validation: Validated on both autonomous driving (nuScenes) and robotic manipulation (MimicGen)
 Robust Experimental Protocol: 110 seeded runs across 2 domains and 2 encoder mechanisms with paired Wilcoxon significance (Holm-corrected p=0.0078)
-🛠️ Installation
+
+### 🛠️ Installation
+
 Prerequisites
+
 Python 3.8+
+
 PyTorch 2.0+
+
 CUDA (recommended)
 
 ### Setup
